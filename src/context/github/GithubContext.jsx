@@ -9,17 +9,22 @@ const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
-    loading: true,
+    loading: false,
   };
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
   // Set loading
   const setLoading = () => dispatch({ type: "SET_LOADING" });
 
-  // Get initial users (testing propose)
-  const fetchUser = async () => {
-    setLoading;
-    const res = await fetch(`${GITHUB_URL}/users`, {
+  // Get search users (testing propose)
+  const searchUser = async (text) => {
+    setLoading();
+
+    const params = new URLSearchParams({
+      q: text,
+    });
+
+    const res = await fetch(`${GITHUB_URL}/search/users?${params}`, {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
       },
@@ -34,7 +39,7 @@ export const GithubProvider = ({ children }) => {
 
   return (
     <GithubContext.Provider
-      value={{ loading: state.loading, users: state.users, fetchUser }}
+      value={{ loading: state.loading, users: state.users }}
     >
       {children}
     </GithubContext.Provider>

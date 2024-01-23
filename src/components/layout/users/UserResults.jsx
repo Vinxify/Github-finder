@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserItems from "./UserItems";
 import GithubContext from "../../../context/github/GithubContext";
+import Spinner from "../../../assets/Spinner";
 
 function UserResults() {
   const { users, loading } = useContext(GithubContext);
@@ -14,7 +15,7 @@ function UserResults() {
       </div>
     );
   } else {
-    return <h3 className='text-3xl'>Loading...</h3>;
+    return <Spinner />;
   }
 }
 
