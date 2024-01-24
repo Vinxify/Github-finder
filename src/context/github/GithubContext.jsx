@@ -9,6 +9,7 @@ const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
+    user: {},
     loading: false,
   };
   const [state, dispatch] = useReducer(githubReducer, initialState);
@@ -41,13 +42,36 @@ export const GithubProvider = ({ children }) => {
     });
   };
 
+  // Get search users (testing propose)
+  const getUser = async (login) => {
+    setLoading();
+
+    const res = await fetch(`${GITHUB_URL}/users/${login}`, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+      },
+    });
+
+    if (res.status === 404) {
+      window.location = "/notfound";
+    } else {
+      const data = await res.json();
+      dispatch({
+        type: "GET_USER",
+        payload: data,
+      });
+    }
+  };
+
   return (
     <GithubContext.Provider
       value={{
         loading: state.loading,
         users: state.users,
+        user: state.user,
         searchUser,
         clearUsers,
+        getUser,
       }}
     >
       {children}

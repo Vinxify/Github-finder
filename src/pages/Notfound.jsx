@@ -11,7 +11,8 @@ function Notfound() {
           <p className='text-6xl mb-8'>404 - Page not found!</p>
 
           <Link to='/' className='btn btn-primary btn-lg'>
-            <FaHome className='mr-2'>Back to Home</FaHome>
+            <FaHome className='mr-2'></FaHome>
+            <p>Back to Home</p>
           </Link>
         </div>
       </div>
