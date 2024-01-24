@@ -2589,16 +2589,12 @@ html {
   position: relative;
 }
 
-.right-9 {
-  right: 2.25rem;
+.right-0 {
+  right: 0px;
 }
 
 .top-0 {
   top: 0px;
-}
-
-.right-0 {
-  right: 0px;
 }
 
 .mx-2 {
@@ -2655,12 +2651,12 @@ html {
   width: 3.5rem;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .w-36 {
   width: 9rem;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .max-w-lg {
@@ -2717,10 +2713,6 @@ html {
   border-radius: 9999px;
 }
 
-.rounded {
-  border-radius: 0.25rem;
-}
-
 .rounded-l-none {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -2739,11 +2731,6 @@ html {
 .bg-neutral {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-}
-
-.bg-primary {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
 }
 
 .bg-secondary {
